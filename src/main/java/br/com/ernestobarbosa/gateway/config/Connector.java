@@ -15,14 +15,10 @@ public abstract class Connector {
     public Connector(String queueName) throws IOException,TimeoutException {
         this.queueName=queueName;
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        // Hostname of your rabbitmq server
         connectionFactory.setHost("localhost");
-        // getting a connection
         connection = connectionFactory.newConnection();
 
-        /*this will create a new channel, using an internally allocated channel number or we can say it will simply declare a queue for this channel. If queue does not exist.*/
         channel = connection.createChannel();
-
         channel.queueDeclare(queueName, false, false, false, null);
     }
 
