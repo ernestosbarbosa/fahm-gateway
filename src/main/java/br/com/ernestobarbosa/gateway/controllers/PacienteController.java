@@ -1,6 +1,6 @@
 package br.com.ernestobarbosa.gateway.controllers;
 
-import br.com.ernestobarbosa.gateway.entity.Paciente;
+import br.com.ernestobarbosa.gateway.entity.table.Paciente;
 import br.com.ernestobarbosa.gateway.exception.ResourceNotFoundException;
 import br.com.ernestobarbosa.gateway.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
@@ -22,7 +23,7 @@ public class PacienteController {
         return pacienteRepository.findAll();
     }
 
-    @PostMapping("/criar")
+    @PutMapping("/criar")
     public Paciente createPaciente(@Valid @RequestBody Paciente p) {
         return pacienteRepository.save(p);
     }
@@ -33,7 +34,7 @@ public class PacienteController {
                 .orElseThrow(() -> new ResourceNotFoundException("Paciente", "id", pacienteId));
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PostMapping("/atualizar/{id}")
     public Paciente updatePaciente(@PathVariable(value = "id") Long pacienteId,
                            @Valid @RequestBody Paciente pacienteDetails) {
 

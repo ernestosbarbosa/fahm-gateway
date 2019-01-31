@@ -1,4 +1,4 @@
-package br.com.ernestobarbosa.gateway.entity;
+package br.com.ernestobarbosa.gateway.entity.table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

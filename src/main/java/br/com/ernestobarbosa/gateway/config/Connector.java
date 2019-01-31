@@ -15,6 +15,7 @@ public abstract class Connector {
     public Connector(String queueName) throws IOException,TimeoutException {
         this.queueName=queueName;
         ConnectionFactory connectionFactory = new ConnectionFactory();
+//        connectionFactory.setHost("35.230.88.45");
         connectionFactory.setHost("localhost");
         connection = connectionFactory.newConnection();
 

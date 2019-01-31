@@ -13,7 +13,7 @@ import static br.com.ernestobarbosa.gateway.config.Constants.START_QUEUE;
 @RequestMapping
 public class Run {
 
-    @PostMapping("/run/{fileName}")
+    @PostMapping("/run/{fileName:.+}")
     public ResponseEntity<String> executar(@PathVariable(value = "fileName") String fileName) throws IOException, TimeoutException {
         new Sender(START_QUEUE).sendMessage(fileName);
         return ResponseEntity.status(201).build();
